@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+}
+
+nav {
+    max-width: 100vw;
+    margin-bottom: 5vh;
+}
+
+h1 {
+    text-align: center;
+    margin: 5vh auto;
+}
+
+.close {
+    cursor: pointer;
+}
+
+.book {
+    width: 30%;
+    margin-top: 10px;
+}
+
+.btn-add-book {
+    margin: 4vh auto;
+    display: block;
+}
+
+.filter-container {
+    display: none;
+}
+
+.insertContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.insertContainer input {
+    margin: 5px;
+}
+
+.modalBookDetails {
+    background-color: antiquewhite;
+    position: fixed;
+    top: 50px;
+    padding: 10px;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content {
+    text-align: center;
+}

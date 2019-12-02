@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: antiquewhite;
+    width: 100vw;
+    height: 100vh;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.questions-container {
+    width: 70vw;
+    margin: auto;
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.question-img {
+    width: 40%;
+    max-height: 35vh;
+    display: block;
+    margin: 0 auto 30px;
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
+}
+
+.display {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.bye {
+    background-color: black;
+    color: blanchedalmond;
+    font-size: 70px;
+}

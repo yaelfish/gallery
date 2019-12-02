@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/todos.css">
+    <title>To Do's</title>
+</head>
+
+<body onload="init()">
+    <div class="container">
+        <h1>To Do</h1>
+
+        <div class="addTodo">
+            <input type="text" id="todo-title" placeholder="Enter new Task">
+            
+            <span class="importanceTitle">Choose Task Importance:</span>
+            <select id="importance">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+
+            <button onclick="onAddClick()">Add Task</button>
+        </div>
+
+        <div class="filterTodos">
+            <span class="filterTitle">Show me: </span>
+            <select id="status-filter" onchange="onStatusFilterChange(this)">
+                <option value="all">All</option>
+                <option value="done">Done</option>
+                <option value="active">Active</option>
+            </select>
+        </div>
+
+        <div class="sortTodos">
+            <span class="sortTitle">Sort by: </span>
+            <select id="status-sort" onchange="onSortStatusChange(this.value)">
+                <option value="text">Alphabetically</option>
+                <option value="importance">importance</option>
+                <option value="timeCreated">Date created (new on top)</option>
+            </select>
+        </div>
+
+        <ul class="todos"></ul>
+
+        <div class="status">
+                Total Todos: <span id="total-todos">-</span> Active: <span id="active-todos">-</span>
+        </div>
+    </div>
+    <script src="./js/utils.js"></script>
+    <script src="./js/storageService.js"></script>
+    <script src="./js/todosService.js"></script>
+    <script src="./js/todosController.js"></script>
+</body>
+
+</html>

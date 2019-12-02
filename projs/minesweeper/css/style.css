@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 11px;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../images/minesweeper-background.jpg');
+    font-family: Helvetica, sans-serif;
+}
+
+.pageContainer {
+    margin: 3vh auto;
+    text-align: center;
+}
+
+header {
+    background: rgba(100, 100, 100, 0.98);
+    color: navajowhite;
+    font-size: 1.1rem;
+}
+
+.levelBtn {
+    background: rgba(100, 100, 100, 0.98);
+    color: navajowhite;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.emoji {
+    cursor: pointer;
+    font-size: 3.6rem;
+    margin: auto;
+}
+
+table {
+    margin: 3vh auto;
+    border-color: silver;
+    background: rgba(100, 100, 100, 0.98);
+}
+
+.cell {
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 1.5rem;
+    border: groove;
+    background-color: rgb(134, 136, 138);
+    cursor: pointer;
+}
+
+.cell img {
+    width: 10px;
+}
+
+.one {
+    color: blue;
+    font-weight: bold;
+}
+
+.two {
+    color: green;
+    font-weight: bold;
+}
+
+.three {
+    color: red;
+    font-weight: bold;
+}
+
+.four {
+    color: rgb(37, 7, 119);
+    font-weight: bold;
+}
+
+.five {
+    color: rgb(100, 25, 2);
+    font-weight: bold;
+}
+
+.opened {
+    background-color: rgba(248, 231, 153, 0.94);
+}
+
+.mine.opened {
+    border-color: red;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.hint {
+    background-color: blueviolet;
+}
+
+.safeBtn {
+    background: rgba(100, 100, 100, 0.98);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    margin: auto;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}

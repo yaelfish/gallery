@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rubik&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.container {
+    width: 80vw;
+    height: 50vh;
+    margin-top: 15vh;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 4vh;
+}
+
+input {
+    background-color: antiquewhite;
+    margin-bottom: 3vh;
+    width: 100%;
+    border-radius: 6px;
+    padding: 7px;
+    margin-left: 1vw;
+}
+
+#importance {
+    margin-left: 1vw;
+}
+
+.addTodo button {
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.filterTodos {
+    margin: 2vh 0;
+}
+
+.sortTodos {
+    margin: 2vh 0;
+}
+
+span.filterTitle {
+    margin-left: 1vw;
+}
+
+.todos {
+    background-color: antiquewhite;
+    padding: 15px;
+    font-family: arial;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 2vh;
+}
+
+.todos li {
+    list-style: none;
+    border-radius: 10%;
+    margin: 5px;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+button.delete {
+    text-decoration: none;
+    float: right;
+}
