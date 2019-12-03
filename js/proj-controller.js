@@ -63,7 +63,7 @@ function renderModal() {
                         </li>
                         <li>Created Date: ${proj.publishedAt}</li>
                          <li>
-                            <a class="checkItOutLink" href='./gallery/${proj.url}' target="_blank">Check it Out</a>
+                            <a class="checkItOutLink" href='./${proj.url}' target="_blank">Check it Out</a>
                         </li>
                     </ul>
                     <button class="btn btn-primary" data-dismiss="modal" type="button">
