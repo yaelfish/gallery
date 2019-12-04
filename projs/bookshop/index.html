@@ -7,14 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
         integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style/animate.css">
+    <link rel="stylesheet" href="./style/style.css">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <title>Book Shop</title>
 </head>
 
 <body onload="init()" class="container">
-    <h1 class="h1">Welcome To My Book Shop</h1>
+    <h1 class="h1" data-trans="title">Welcome To My Book Shop</h1>
     
+    <select onchange="onSetLang(this.value)">
+        <option value="en">English</option>
+        <option value="he">עברית</option>
+    </select>
+
     <div class="filter-container">
         <input placeholder="book name" onkeyup="onFilterName(this)"> sort by
         <select onchange="onSort(this)">
@@ -24,7 +30,7 @@
     </div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-add-book" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-primary btn-add-book" data-toggle="modal" data-target="#exampleModal" data-trans="create">
         Create new Book
     </button>
     
@@ -34,20 +40,21 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addBookModalLabel">Add new book title</h5>
+                    <h5 class="modal-title" id="addBookModalLabel" data-trans="Add-new-book-title">Add new book title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" class="add-name input" placeholder="book title">
-                    <input type="text" class="add-author input" placeholder="author">
-                    <input type="number" class="add-price input" placeholder="price">
-                    <input type="text" class="add-image input" placeholder="image url">
+                    <input type="text" class="add-name input" placeholder="book title" data-trans="book-title">
+                    <input type="text" class="add-author input" placeholder="author" data-trans="author">
+                    <input type="number" class="add-price input" placeholder="price" data-trans="price">
+                    <input type="number" class="add-price input" placeholder="rating 1-10" data-trans="rating">
+                    <input type="text" class="add-image input" placeholder="image url" data-trans="placeholder-img-url">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="onAddBook()">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"  data-trans="close">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="onAddBook()" data-trans="save">Save changes</button>
                 </div>
             </div>
         </div>
@@ -60,17 +67,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateModalLabel">Update book price</h5>
+                    <h5 class="modal-title" id="updateModalLabel" data-trans="update-book-price">Update book price</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="number" class="add-price input" id="updated-price" placeholder="price">
+                    <input type="number" class="add-price input" id="updated-price" placeholder="price" data-trans="price">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="onAddBook()">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" data-trans="close">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="onReadAndUpdateBook()" data-trans="save">Save changes</button>
                 </div>
             </div>
         </div>
@@ -81,16 +88,31 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col" onclick="onSort('author')">Author</th>
-                    <th scope="col" onclick="onSort('name')">Title</th>
-                    <th scope="col" onclick="onSort('price')">Price</th>
-                    <th colspan="3" scope="col">Actions</th>
+                    <th scope="col" onclick="onSort('author')" data-trans="author">Author</th>
+                    <th scope="col" onclick="onSort('name')" data-trans="book-title">Title</th>
+                    <th scope="col" onclick="onSort('price')" data-trans="price">Price</th>
+                    <th scope="col" onclick="onSort('rating')" data-trans="rating">Rating</th>
+                    <th colspan="3" scope="col" data-trans="actions">Actions</th>
                 </tr>
             </thead>
-            <tbody class="books-container"></tbody>
+            <tbody class="books-container" id="touch-ev-container"></tbody>
         </table>
     </div>
-    <button class="btn btn-primary btn-add-book" onclick="onNext()">next</button>
+
+    <div class="pagination-controller">
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" tabindex="-1" data-trans="prev" onclick="onNextPrevPage(-1)">Previous</a>
+                </li>
+                <div class="nav-container"></div>
+                
+                <li class="page-item">
+                    <a class="page-link" href="#" data-trans="next" onclick="onNextPrevPage(1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
     <div class="modal fade" id="displayBookDetails" tabindex="-1" role="dialog" aria-labelledby="displayBookModalLabel"
         aria-hidden="true">
@@ -106,7 +128,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+    
     <script src="./js/utils.js"></script>
+    <script src="./js/i18n-service.js"></script>
+    <script src="./lib/hammer.js"></script>
     <script src="./js/booksController.js"></script>
     <script src="./js/booksService.js"></script>
     <script src="./js/booksLocalService.js"></script>
